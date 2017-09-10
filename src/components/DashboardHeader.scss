@@ -1,0 +1,15 @@
+@import '../styles/_colors.scss';
+
+.container {
+  background-color: $primary-darker-color;
+  padding: 10px;
+  font-size: 24px;
+  color: $text-color;
+  align: bottom;
+}
+
+@media (max-width: 480px) {
+  .container{
+    font-size: 20px;
+  }
+}
