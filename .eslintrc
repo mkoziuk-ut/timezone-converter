@@ -26,5 +26,5 @@
       ]
     }
   },
-  "plugins": ["react", "babel"]
+  "plugins": ["react"]
 }
