@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import moment from 'moment-timezone';
 import styles from './Dashboard.css';
@@ -7,7 +9,11 @@ import TimezonePanels from '../components/TimezonePanels';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+
     this.updateTime = this.updateTime.bind(this);
+    this.removeTimezone = this.removeTimezone.bind(this);
+    this.setCustomTime = this.setCustomTime.bind(this);
+
     const intervalId = setInterval(this.updateTime, 1000);
     this.state = {
       momentNow: moment(),
@@ -27,9 +33,12 @@ class Dashboard extends React.Component {
     clearInterval(this.state.intervalId);
   }
 
-  updateTime() {
+  setCustomTime(momentTime) {
+    debugger
+    clearInterval(this.state.intervalId);
     this.setState({
-      momentNow: moment(),
+      momentNow: momentTime,
+      intervalId: null,
     });
   }
 
@@ -49,11 +58,28 @@ class Dashboard extends React.Component {
     });
   }
 
+  removeTimezone(timezoneName) {
+    this.setState({
+      timezones: this.state.timezones.filter((tz) => tz.name !== timezoneName),
+    });
+  }
+
+  updateTime() {
+    this.setState({
+      momentNow: moment(),
+    });
+  }
+
   render() {
     return (
       <div className={styles.container}>
         <DashboardHeader />
-        <TimezonePanels timezones={this.state.timezones} momentNow={this.state.momentNow} />
+        <TimezonePanels
+          timezones={this.state.timezones}
+          momentNow={this.state.momentNow}
+          removeTimezoneHandler={this.removeTimezone}
+          setCustomTime={this.setCustomTime}
+        />
       </div>
     );
   }

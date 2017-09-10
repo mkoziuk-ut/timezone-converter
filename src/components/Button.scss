@@ -1,10 +1,12 @@
 @import '../styles/_colors.scss';
 
 .btn {
+  display: inline-block;
   background: $button-color;
   border: none;
   border-radius: 0px;
   padding: 10px 25px;
+  margin: 0px 5px;
   color: $text-color;
   text-transform: uppercase;
   font-weight: bold;
