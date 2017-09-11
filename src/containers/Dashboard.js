@@ -73,7 +73,6 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <DashboardHeader />
         <TimezonePanels
           timezones={this.state.timezones}
           momentNow={this.state.momentNow}
