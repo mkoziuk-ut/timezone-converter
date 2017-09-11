@@ -45,7 +45,6 @@ class TimezonePanels extends React.Component {
   }
 
   setCustomTime(timezoneName) {
-    debugger
     let parsedInput = moment.tz(this.state.timeValue, 'HH:mm:ss', timezoneName);
     this.props.setCustomTime(parsedInput);
     this.stopEditing();

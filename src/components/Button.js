@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Button.css';
 
-class Button extends React.Component {
-  render() {
-    return (
-      <a className={styles.btn} onClick={this.props.clickHandler} role="tab" tabIndex="0">
-        {this.props.label}
-      </a>
-    );
-  }
-}
+const Button = ({ label, clickHandler }) => (
+  <a className={styles.btn} onClick={clickHandler} role="tab" tabIndex="0">
+    {label}
+  </a>
+);
 
 Button.propTypes = {
   label: PropTypes.string.isRequired,
