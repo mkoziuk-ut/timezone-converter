@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Select from 'react-select'; // eslint-disable-line import/no-unresolved,import/extensions
@@ -64,10 +65,10 @@ class AddTimezone extends React.Component {
 }
 
 AddTimezone.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }).isRequired,
-  dispatch: React.PropTypes.shape({}).isRequired,
+  dispatch: PropTypes.shape({}).isRequired,
 };
 
 export default connect()(withRouter(AddTimezone));

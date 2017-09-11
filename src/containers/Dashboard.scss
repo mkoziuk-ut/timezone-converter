@@ -1,4 +1,25 @@
+@import '../styles/_colors.scss';
+
 .container {
   min-width: 320px;
   padding-top: 56px;
+}
+
+.panels {
+  max-width: 1000px;
+  padding: 10px;
+  margin: auto;
+}
+
+.customTimeMessage {
+  font-size: 14px;
+  color: $grey-text-color;
+  cursor: pointer;
+  text-align: center;
+}
+
+@media (min-width: 400px) and (max-width: 40em) {
+  .container {
+    padding: 2em;
+  }
 }

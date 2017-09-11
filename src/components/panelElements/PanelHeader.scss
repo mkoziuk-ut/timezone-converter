@@ -1,0 +1,37 @@
+@import '../../styles/_colors.scss';
+
+.header {
+  background-color: $primary-color;
+  padding: 20px;
+  color: white;
+  overflow: hidden;
+
+  h1 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0px;
+  }
+
+  h2 {
+    font-size: 12px;
+    font-weight: 100;
+    margin: 5px 0 0 0;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: rgba(0,0,0,0.2);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(0,0,0,0.5);
+    transform: scale(1.2);
+  }
+}

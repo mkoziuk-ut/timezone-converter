@@ -1,0 +1,23 @@
+@import '../../styles/_colors.scss';
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+  .greyLabel {
+    color: $grey-text-color;
+    font-size: 10px;
+  }
+
+  input {
+    box-sizing: border-box;
+    width: 80%;
+    padding: 6px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 3px;
+  }
+}

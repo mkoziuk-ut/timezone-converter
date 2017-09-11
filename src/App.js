@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import DashboardHeader from './components/DashboardHeader';
+import NavBar from './components/NavBar';
 import Dashboard from './containers/Dashboard';
 import AddTimezone from './containers/AddTimezone';
 
@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <DashboardHeader />
+        <NavBar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/add" component={AddTimezone} />
