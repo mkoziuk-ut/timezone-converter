@@ -35,8 +35,6 @@ const dashboard = (state = initialState, action) => {
       return Object.assign({}, state, {
         showingCustomTime: true,
         momentNow: action.customTime,
-        editedTimezone: null,
-        editFieldValue: null,
       });
 
     default:

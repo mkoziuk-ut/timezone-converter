@@ -1,9 +1,8 @@
-/* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleEditMode, removeTimezone, updateEditFieldValue } from '../actions';
 import PropTypes from 'prop-types';
 import moment from 'moment-timezone';
+import { toggleEditMode, removeTimezone, updateEditFieldValue } from '../actions';
 import PanelHeader from '../components/panelElements/PanelHeader';
 import TimeEdit from '../components/panelElements/TimeEdit';
 import Clock from '../components/panelElements/Clock';
@@ -21,8 +20,9 @@ class TimezonePanel extends React.Component {
 
   setCustomTime() {
     const timezoneName = this.props.timezone.name;
-    const parsedInput = moment.tz(this.props.dashboard.editFieldValue, 'HH:mm:ss', timezoneName);
-    this.props.setCustomTime(parsedInput);
+    const momentFromInput = moment.tz(this.props.dashboard.editFieldValue, 'HH:mm:ss', timezoneName);
+    this.props.setCustomTime(momentFromInput);
+    this.props.dispatch(toggleEditMode(timezoneName, false));
   }
 
   removeTimezone() {
@@ -31,23 +31,16 @@ class TimezonePanel extends React.Component {
 
   toggleEditMode(enabled) {
     const { dashboard, timezone } = this.props;
-
-    let fieldValue = null;
     if (enabled) {
-      fieldValue = dashboard.momentNow.tz(timezone.name).format('HH:mm:ss');
+      const fieldValue = dashboard.momentNow.tz(timezone.name).format('HH:mm:ss');
+      this.props.dispatch(toggleEditMode(timezone.name, true, fieldValue));
+    } else {
+      this.props.dispatch(toggleEditMode(timezone.name, false));
     }
-
-    this.props.dispatch(
-      toggleEditMode(
-        timezone.name,
-        enabled,
-        fieldValue,
-      )
-    );
   }
 
   updateEditFieldValue(e) {
-    this.props.dispatch(updateEditFieldValue(e.target.value))
+    this.props.dispatch(updateEditFieldValue(e.target.value));
   }
 
 
@@ -56,7 +49,6 @@ class TimezonePanel extends React.Component {
 
     const isEdited = (dashboard.editedTimezone === timezone.name);
     if (isEdited) {
-      const editFieldValue = dashboard.editFieldValue;
       return (<TimeEdit
         timeValue={dashboard.editFieldValue}
         updateTimeValue={this.updateEditFieldValue}
@@ -84,12 +76,7 @@ class TimezonePanel extends React.Component {
     );
   }
 }
-// removeTimezoneHandler={this.removeTimezone}
-// toggleEditMode={this.toggleEditMode}
-// updateEditFieldValue={this.updateEditFieldValue}
-// isEdited={isEdited}
-// editFieldValue={editFieldValue}
-// setCustomTime={() => this.setCustomTime(timezone.name)}
+
 TimezonePanel.propTypes = {
   timezone: PropTypes.shape({
     name: PropTypes.string,
@@ -100,12 +87,10 @@ TimezonePanel.propTypes = {
   time: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
   setCustomTime: PropTypes.func.isRequired,
-  // removeTimezoneHandler: PropTypes.func.isRequired,
-  // toggleEditMode: PropTypes.func.isRequired,
-  // isEdited: PropTypes.bool.isRequired,
-  // updateEditFieldValue: PropTypes.func.isRequired,
-  // editFieldValue: PropTypes.string.isRequired,
-  // setCustomTime: PropTypes.func.isRequired,
+  dashboard: PropTypes.shape({
+    editFieldValue: PropTypes.string,
+    momentNow: PropTypes.object,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

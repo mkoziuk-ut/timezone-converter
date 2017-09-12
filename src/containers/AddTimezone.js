@@ -68,7 +68,7 @@ AddTimezone.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
-  dispatch: PropTypes.shape({}).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(withRouter(AddTimezone));

@@ -52,7 +52,7 @@ class Dashboard extends React.Component {
         role="button"
         tabIndex="-1"
       >
-        The clocks are now stopped. Click here to resume showing current time.
+        The clocks are now stopped. Click this message to resume showing current time.
       </div>
     ) : null;
   }
