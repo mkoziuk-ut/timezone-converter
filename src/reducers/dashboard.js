@@ -13,7 +13,7 @@ const dashboard = (state = initialState, action) => {
     case 'UPDATE_TIME':
       return Object.assign({}, state, {
         momentNow: action.momentNow,
-        customTime: null,
+        showingCustomTime: false,
       });
 
     // enables or disable edit mode on the specified timezone panel
@@ -33,7 +33,7 @@ const dashboard = (state = initialState, action) => {
     // the showingCustomTime flag to indicate that clocks are not ticking
     case 'SHOW_CUSTOM_TIME':
       return Object.assign({}, state, {
-        customTime: true,
+        showingCustomTime: true,
         momentNow: action.customTime,
         editedTimezone: null,
         editFieldValue: null,

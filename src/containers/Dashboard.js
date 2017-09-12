@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
   }
 
   renderTickingStoppedMessage() {
-    return this.props.dashboard.customTime ? (
+    return this.props.dashboard.showingCustomTime ? (
       <div
         className={styles.customTimeMessage}
         onClick={this.resumeCurrentTime}
@@ -85,7 +85,7 @@ Dashboard.propTypes = {
   dispatch: PropTypes.func.isRequired,
   timezones: PropTypes.arrayOf(PropTypes.object).isRequired,
   dashboard: PropTypes.shape({
-    customTime: PropTypes.object,
+    showingCustomTime: PropTypes.bool,
   }).isRequired,
 };
 
