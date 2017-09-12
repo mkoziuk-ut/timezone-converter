@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Button from '../Button';
 import styles from './TimeEdit.css';
 
-const TimeEdit = ({ cancelEdit, updateTimeValue, timeValue, setCustomTime }) => (
+const TimeEdit = ({ cancelEdit, updateTimeValue, timeValue, setCustomTime, isValid }) => (
   <div className={styles.container}>
-    <input value={timeValue} onChange={updateTimeValue} />
+    <input className={isValid ? '' : styles.invalidValue} value={timeValue} onChange={updateTimeValue} />
     <div className={styles.greyLabel}>
       Enter the desired time as HH:mm:ss
     </div>
@@ -13,6 +13,7 @@ const TimeEdit = ({ cancelEdit, updateTimeValue, timeValue, setCustomTime }) => 
       <Button
         label="Set time"
         clickHandler={setCustomTime}
+        disabled={!isValid}
       />
       <Button
         label="Cancel"
@@ -27,6 +28,11 @@ TimeEdit.propTypes = {
   updateTimeValue: PropTypes.func.isRequired,
   cancelEdit: PropTypes.func.isRequired,
   setCustomTime: PropTypes.func.isRequired,
+  isValid: PropTypes.bool,
+};
+
+TimeEdit.defaultProps = {
+  isValid: true,
 };
 
 export default TimeEdit;

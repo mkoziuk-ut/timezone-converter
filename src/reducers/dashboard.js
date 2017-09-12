@@ -5,6 +5,7 @@ const initialState = {
   momentNow: moment(), // the time to be displayed on all clocks
   editedTimezone: null, // the name of the time zone that is now in edit mode
   editFieldValue: null, // the value of the input field for an edited time zone
+  valueIsValid: true, // validation results for editFieldValue
 };
 
 const dashboard = (state = initialState, action) => {
@@ -21,12 +22,14 @@ const dashboard = (state = initialState, action) => {
       return Object.assign({}, state, {
         editedTimezone: action.enable ? action.timezoneName : null,
         editFieldValue: action.enable ? action.fieldValue : null,
+        valueIsValid: true,
       });
 
     // updates state of the time input field while editing
     case 'UPDATE_EDIT_FIELD_VALUE':
       return Object.assign({}, state, {
         editFieldValue: action.fieldValue,
+        valueIsValid: moment(action.fieldValue, 'HH:mm:ss', true).isValid(),
       });
 
     // sets the displayed time to the value specified as customTime, and sets

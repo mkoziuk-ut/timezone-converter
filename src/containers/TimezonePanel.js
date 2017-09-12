@@ -43,7 +43,6 @@ class TimezonePanel extends React.Component {
     this.props.dispatch(updateEditFieldValue(e.target.value));
   }
 
-
   renderPanelContent() {
     const { dashboard, timezone, time } = this.props;
 
@@ -54,6 +53,7 @@ class TimezonePanel extends React.Component {
         updateTimeValue={this.updateEditFieldValue}
         setCustomTime={this.setCustomTime}
         cancelEdit={() => this.toggleEditMode(false)}
+        isValid={dashboard.valueIsValid}
       />);
     }
 

@@ -20,6 +20,11 @@
   box-shadow: none;
 }
 
-.btn:hover {
+:not(.disabled).btn:hover {
   background: $button-color-hover;
+}
+
+.disabled {
+  background-color: $grey-text-color;
+  cursor: auto;
 }
