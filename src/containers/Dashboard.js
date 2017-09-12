@@ -2,22 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment-timezone';
-import { addTimezone, updateTime, showCustomTime } from '../actions';
-import timezoneUtils from '../utils/timezone';
+import { updateTime, showCustomTime } from '../actions';
 import styles from './Dashboard.css';
 import TimezonePanel from './TimezonePanel';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-
     this.updateTime = this.updateTime.bind(this);
     this.setCustomTime = this.setCustomTime.bind(this);
     this.resumeCurrentTime = this.resumeCurrentTime.bind(this);
+  }
 
-    this.addTimezone('GMT');
-    this.addTimezone(moment.tz.guess());
-
+  componentDidMount() {
     this.intervalId = setInterval(this.updateTime, 1000);
   }
 
@@ -28,11 +25,6 @@ class Dashboard extends React.Component {
   setCustomTime(customTime) {
     clearInterval(this.intervalId);
     this.props.dispatch(showCustomTime(customTime));
-  }
-
-  addTimezone(timezoneName) {
-    const timezoneObj = timezoneUtils.getTimezoneInfo(timezoneName);
-    this.props.dispatch(addTimezone(timezoneObj));
   }
 
   resumeCurrentTime() {

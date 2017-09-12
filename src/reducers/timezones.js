@@ -1,5 +1,13 @@
+import moment from 'moment-timezone';
+import timezoneUtils from '../utils/timezone';
+
 // the timezones state is an array of timezone objects
-const timezones = (state = [], action) => {
+const initialState = [
+  timezoneUtils.getTimezoneInfo('GMT'),
+  timezoneUtils.getTimezoneInfo(moment.tz.guess()),
+];
+
+const timezones = (state = initialState, action) => {
   switch (action.type) {
     // ads a timezone object to the array
     case 'ADD_TIMEZONE':
