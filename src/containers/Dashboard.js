@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
   }
 
   updateTime() {
-    this.props.dispatch(updateTime(moment()));
+    this.props.dispatch(updateTime(moment().format()));
   }
 
   renderTickingStoppedMessage() {
@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
         {this.renderTickingStoppedMessage()}
         <div className={`${styles.panels} flex flex-wrap clearfix`}>
           { timezones.map((timezone) => {
-            const time = dashboard.momentNow.tz(timezone.name).format('HH:mm:ss');
+            const time = moment(dashboard.momentNow).tz(timezone.name).format('HH:mm:ss');
             return (
               <div className="col col-12 sm-col-6 md-col-4" key={`panel-${timezone.name}`}>
                 <TimezonePanel

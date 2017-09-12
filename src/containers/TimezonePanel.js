@@ -89,7 +89,7 @@ TimezonePanel.propTypes = {
   setCustomTime: PropTypes.func.isRequired,
   dashboard: PropTypes.shape({
     editFieldValue: PropTypes.string,
-    momentNow: PropTypes.object,
+    momentNow: PropTypes.string,
   }).isRequired,
 };
 

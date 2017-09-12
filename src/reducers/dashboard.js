@@ -2,7 +2,7 @@ import moment from 'moment-timezone';
 
 const initialState = {
   showingCustomTime: false, // inidicates that a custom (not current) time is displayed
-  momentNow: moment(), // the time to be displayed on all clocks
+  momentNow: moment().format(), // the time to be displayed on all clocks as string
   editedTimezone: null, // the name of the time zone that is now in edit mode
   editFieldValue: null, // the value of the input field for an edited time zone
 };
