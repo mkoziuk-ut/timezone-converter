@@ -4,7 +4,7 @@ import Button from '../Button';
 import styles from './TimeEdit.css';
 
 const TimeEdit = ({ cancelEdit, updateTimeValue, timeValue, setCustomTime, isValid }) => (
-  <div className={styles.container}>
+  <div className={styles.container} name="TimeEdit">
     <input className={isValid ? '' : styles.invalidValue} value={timeValue} onChange={updateTimeValue} />
     <div className={styles.greyLabel}>
       Enter the desired time as HH:mm:ss

@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import styles from './Button.css';
 
 const Button = ({ label, clickHandler, disabled }) => (
-  <a className={`${styles.btn} ${disabled ? styles.disabled : ''}`} onClick={(e) => (disabled ? '' : clickHandler(e))} role="tab" tabIndex="0">
+  <a
+    className={`${styles.btn} ${disabled ? styles.disabled : ''}`}
+    onClick={(e) => (disabled ? '' : clickHandler(e))}
+    role="button"
+    tabIndex="0"
+    name={`btn-${label}`}
+  >
     {label}
   </a>
 );

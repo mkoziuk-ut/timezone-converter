@@ -8,6 +8,7 @@ const Clock = ({ time, enableEditMode }) => (
     onClick={enableEditMode}
     role="button"
     tabIndex="-1"
+    name="Clock"
   >
     <p className={styles.time}>
       {time}
