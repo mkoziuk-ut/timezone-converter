@@ -1,0 +1,47 @@
+@import '../../styles/_colors.scss';
+
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+  padding: 20px;
+
+  &:hover .actionInfo {
+    opacity: 1;
+    transition: all 0.2s 1s linear;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.time {
+  font-size: 36px;
+  letter-spacing: 5px;
+  color: $dark-grey-color;
+  margin: 0;
+}
+
+.actionInfo {
+  opacity: 0;
+}
+
+.greyLabel {
+  color: $grey-text-color;
+  font-size: 10px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .time {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+}

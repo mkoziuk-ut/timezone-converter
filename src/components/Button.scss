@@ -1,0 +1,30 @@
+@import '../styles/_colors.scss';
+
+.btn {
+  display: inline-block;
+  background: $button-color;
+  border: none;
+  border-radius: 0px;
+  padding: 10px 25px;
+  margin: 0px 5px;
+  color: $text-color;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+:not(.disabled).btn:hover {
+  background: $button-color-hover;
+}
+
+.disabled {
+  background-color: $grey-text-color;
+  cursor: auto;
+}
