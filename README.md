@@ -12,7 +12,7 @@ Run npm install to get all the dependencies in place.
 
 ## Supported commands
 
-`npm start` - starts a dev server and sass watch
-`npm run build` - creates a dist version of the project
-`npm test` - runs all the tests
-`npm test -- --coverage` - to see test coverage
+`npm start` - starts a dev server and sass watch  
+`npm run build` - creates a dist version of the project  
+`npm test` - runs all the tests  
+`npm test -- --coverage` - to see test coverage  
