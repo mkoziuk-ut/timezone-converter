@@ -10,8 +10,10 @@ const initialState = [
 const timezones = (state = initialState, action) => {
   switch (action.type) {
     // ads a timezone object to the array
-    case 'ADD_TIMEZONE':
-      return [...state, action.timezone];
+    case 'ADD_TIMEZONE': {
+      const hasTimezone = state.filter((t) => t.name === action.timezone.name).length === 0;
+      return hasTimezone ? [...state, action.timezone] : state;
+    }
 
     // removes a timezone object to the array
     case 'REMOVE_TIMEZONE':
