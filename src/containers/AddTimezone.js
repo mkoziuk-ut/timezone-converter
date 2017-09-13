@@ -28,10 +28,12 @@ class AddTimezone extends React.Component {
   }
 
   addSelectedTimezone() {
-    const timezoneObj = timezoneUtils.getTimezoneInfo(this.state.selectValue);
-    this.props.dispatch(addTimezone(timezoneObj));
-    this.setSelectValue(null);
-    this.props.history.push('/');
+    if (this.state.selectValue) {
+      const timezoneObj = timezoneUtils.getTimezoneInfo(this.state.selectValue);
+      this.props.dispatch(addTimezone(timezoneObj));
+      this.setSelectValue(null);
+      this.props.history.push('/');
+    }
   }
 
   render() {
@@ -56,6 +58,7 @@ class AddTimezone extends React.Component {
             <Button
               label="Add selected timezone"
               clickHandler={this.addSelectedTimezone}
+              disabled={!this.state.selectValue}
             />
           </div>
         </div>
