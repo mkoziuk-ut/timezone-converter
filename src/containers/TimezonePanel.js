@@ -66,7 +66,7 @@ class TimezonePanel extends React.Component {
   render() {
     const { timezone } = this.props;
     return (
-      <div className={styles.panel}>
+      <div className={styles.panel} name="TimezonePanel">
         <PanelHeader
           timezone={timezone}
           removeTimezone={this.removeTimezone}
