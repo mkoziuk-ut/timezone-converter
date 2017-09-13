@@ -12,6 +12,7 @@ export const removeTimezone = (timezoneName) => ({
 });
 
 /* Dashboard actions */
+// updates the time used as base by timezone clocks
 export const updateTime = (momentNow) => ({
   type: 'UPDATE_TIME',
   momentNow: momentNow,
